@@ -16,6 +16,7 @@ import ch.fhnw.webfr.flashcard.util.QuestionnaireInitializer;
 
 @SuppressWarnings("serial")
 public class BasicServlet extends HttpServlet {
+	private Router router;
 	
 	private class Router{
 		private String[] _path;
@@ -40,12 +41,12 @@ public class BasicServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		System.out.println(request.getPathInfo());
 		
-		Router r = new Router(request.getPathInfo());
-		System.out.println(r.getControllerName());
-		System.out.println(r.getAction());
+		router = new Router(request.getPathInfo());
+		System.out.println(router.getControllerName());
+		System.out.println(router.getAction());
 		
 		String[] pathElements = request.getRequestURI().split("/");
-		if (isLastPathElementQuestionnaires(pathElements)) {
+		if ("questionnaires".equals(router.getControllerName())) {
 			handleQuestionnairesRequest(request, response);
 		} else {
 			handleIndexRequest(request, response);
@@ -59,16 +60,26 @@ public class BasicServlet extends HttpServlet {
 
 	private void handleQuestionnairesRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		List<Questionnaire> questionnaires = QuestionnaireRepository.getInstance().findAll();
-		PrintWriter writer = response.getWriter();
-		writer.append("<html><head><title>Example</title></head><body>");
-		writer.append("<h3>Fragebögen</h3>");
-		for (Questionnaire questionnaire : questionnaires) {
-			String url = request.getContextPath()+request.getServletPath();
-			url = url + "/questionnaires/" + questionnaire.getId().toString();
-			writer.append("<p><a href='" + response.encodeURL(url) +"'>" + questionnaire.getTitle() + "</a></p>");
+		if(router.getAction() == null || router.getAction().equals("")){			
+			List<Questionnaire> questionnaires = QuestionnaireRepository.getInstance().findAll();
+			PrintWriter writer = response.getWriter();
+			writer.append("<html><head><title>Example</title></head><body>");
+			writer.append("<h3>Fragebögen</h3>");
+			for (Questionnaire questionnaire : questionnaires) {
+				String url = request.getContextPath()+request.getServletPath();
+				url = url + "/questionnaires/" + questionnaire.getId().toString();
+				writer.append("<p><a href='" + response.encodeURL(url) +"'>" + questionnaire.getTitle() + "</a></p>");
+			}
+			writer.append("</body></html>");
+		}else{
+ 			Long id = Long.parseLong(router.getAction());
+			Questionnaire q = QuestionnaireRepository.getInstance().findById(id);
+			PrintWriter writer = response.getWriter();
+			writer.append("<html><head><title>Example</title></head><body>");
+			writer.append("<h3>"+q.getTitle() +"</h3>");
+			writer.append("<p>" + q.getDescription() +"</p>");
+			writer.append("</body></html>");
 		}
-		writer.append("</body></html>");
 	}
 
 	private void handleIndexRequest(HttpServletRequest request,
