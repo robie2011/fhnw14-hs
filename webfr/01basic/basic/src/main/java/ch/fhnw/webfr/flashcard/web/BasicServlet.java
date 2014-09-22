@@ -39,11 +39,11 @@ public class BasicServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
-		System.out.println(request.getPathInfo());
+//		System.out.println(request.getPathInfo());
 		
 		router = new Router(request.getPathInfo());
-		System.out.println(router.getControllerName());
-		System.out.println(router.getAction());
+//		System.out.println(router.getControllerName());
+//		System.out.println(router.getAction());
 		
 		// Dispatching Process
 		String[] pathElements = request.getRequestURI().split("/");

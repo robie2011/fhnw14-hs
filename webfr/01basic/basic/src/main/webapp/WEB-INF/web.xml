@@ -13,5 +13,18 @@
 		<servlet-name>Basic Servlet</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+	<filter>
+		<filter-name>Logger-Filter</filter-name>
+		<filter-class>robertrajakone.LoggerFilter</filter-class>
+		<init-param>
+			<param-name>loglevel</param-name>
+			<param-value>10</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>Logger-Filter</filter-name>
+		<servlet-name>Basic Servlet</servlet-name>
+	</filter-mapping>
 	
 </web-app>
