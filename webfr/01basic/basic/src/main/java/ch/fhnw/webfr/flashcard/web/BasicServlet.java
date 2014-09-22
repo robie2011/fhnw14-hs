@@ -45,6 +45,7 @@ public class BasicServlet extends HttpServlet {
 		System.out.println(router.getControllerName());
 		System.out.println(router.getAction());
 		
+		// Dispatching Process
 		String[] pathElements = request.getRequestURI().split("/");
 		if ("questionnaires".equals(router.getControllerName())) {
 			handleQuestionnairesRequest(request, response);
@@ -65,6 +66,8 @@ public class BasicServlet extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			writer.append("<html><head><title>Example</title></head><body>");
 			writer.append("<h3>Fragebögen</h3>");
+			
+			// Todo: Handling empty result
 			for (Questionnaire questionnaire : questionnaires) {
 				String url = request.getContextPath()+request.getServletPath();
 				url = url + "/questionnaires/" + questionnaire.getId().toString();
