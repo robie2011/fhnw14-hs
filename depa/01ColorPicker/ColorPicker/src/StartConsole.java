@@ -6,13 +6,18 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
+import robertrajakone.colorpicker.ColorFrame;
+import robertrajakone.colorpicker.ColorModelAbstract;
+
+
 
 public class StartConsole {
 
 	public static void main(String[] args) {
 		System.out.println("Starting");
+		/*
 		JFrame frame = new JFrame("ColorPicker");
-		frame.setSize(new Dimension(400, 300));
+		
 		
 		Container pane = frame.getContentPane();
 		JButton button = new JButton("Buttun1");
@@ -21,6 +26,12 @@ public class StartConsole {
 
 		pane.add(button, BorderLayout.LINE_START);
 		
+		frame.setVisible(true);
+		*/
+		
+		ColorModelAbstract m = new ColorModelAbstract();
+		ColorFrame frame = new ColorFrame(m);
+		frame.setSize(new Dimension(400, 300));
 		frame.setVisible(true);
 	}
 
