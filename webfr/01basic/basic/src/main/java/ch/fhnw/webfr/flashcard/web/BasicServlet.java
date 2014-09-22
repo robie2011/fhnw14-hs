@@ -97,8 +97,7 @@ public class BasicServlet extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		QuestionnaireInitializer.createQuestionnaires();
+		super.init(config);		
 	}
 
 }

@@ -13,6 +13,19 @@
 		<servlet-name>Basic Servlet</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+	
+	
+	<!-- 	AB3_Servlet Komponenten.pdf/Aufgabe 2 -->
+	<context-param>
+		<param-name>mode</param-name>
+		<param-value>test</param-value>
+	</context-param>
+	<listener>
+		<listener-class>robertrajakone.DataGeneratorListener</listener-class>
+	</listener>
+	
+	
+	<!-- 	AB3_Servlet Komponenten.pdf/Aufgabe 1 -->
 	<filter>
 		<filter-name>Logger-Filter</filter-name>
 		<filter-class>robertrajakone.LoggerFilter</filter-class>
@@ -20,11 +33,10 @@
 			<param-name>loglevel</param-name>
 			<param-value>10</param-value>
 		</init-param>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>Logger-Filter</filter-name>
-		<servlet-name>Basic Servlet</servlet-name>
-	</filter-mapping>
+	</filter>	
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>Logger-Filter</filter-name> -->
+<!-- 		<servlet-name>Basic Servlet</servlet-name> -->
+<!-- 	</filter-mapping> -->
 	
 </web-app>
