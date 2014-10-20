@@ -173,6 +173,7 @@ public class StdContext extends AbstractContext {
 	protected void doRegisterDrawTools() {
 		// TODO Add new figure tools here
 		DrawTool rectangleTool = new RectTool(this);
+		
 		addTool(rectangleTool);
 	}
 
