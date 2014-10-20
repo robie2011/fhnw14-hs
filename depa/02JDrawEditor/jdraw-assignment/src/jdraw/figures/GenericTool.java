@@ -12,7 +12,7 @@ import jdraw.framework.DrawTool;
 import jdraw.framework.DrawView;
 import jdraw.framework.Figure;
 
-public abstract class AbstractTool implements DrawTool {
+public class GenericTool<T> implements DrawTool {
 	private String name = "UNDEFINED";
 	/** 
 	 * the image resource path. 
@@ -44,13 +44,24 @@ public abstract class AbstractTool implements DrawTool {
 	 */
 	private Point anchor = null;
 	
-	public AbstractTool(DrawContext context, String toolName) {
+	Class<T> shapeClass;
+	
+	public GenericTool(DrawContext context, Class<T> className) {
 		this.context = context;
 		this.view = context.getView();
-		this.name = toolName;
+		this.shapeClass = className;
+		this.name = className.getSimpleName();
 	}
 	
-	protected abstract Figure createNewFigure(int x, int y);	
+	protected Figure createNewFigure(int x, int y){
+		Figure f = null;
+		try{
+			f = (Figure) shapeClass.getConstructor(Integer.TYPE,Integer.TYPE,Integer.TYPE,Integer.TYPE).newInstance(x,y,0,0);
+		}catch(Exception e){
+			
+		}
+		return f;
+	}
 	
 	@Override
 	public void activate() {

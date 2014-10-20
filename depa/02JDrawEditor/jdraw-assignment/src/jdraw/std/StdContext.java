@@ -16,14 +16,8 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileFilter;
 
-import jdraw.figures.Oval;
-import jdraw.figures.OvalTool;
-import jdraw.figures.RectTool;
-import jdraw.framework.DrawModel;
-import jdraw.framework.DrawTool;
-import jdraw.framework.DrawToolFactory;
-import jdraw.framework.DrawView;
-import jdraw.framework.Figure;
+import jdraw.figures.*;
+import jdraw.framework.*;
 
 /**
  * Standard implementation of interface DrawContext.
@@ -174,10 +168,9 @@ public class StdContext extends AbstractContext {
 	@Override
 	protected void doRegisterDrawTools() {
 		// TODO Add new figure tools here
-		DrawTool rectangleTool = new RectTool(this);
 		
-		addTool(rectangleTool);
-		addTool(new OvalTool(this));
+		addTool(new GenericTool<Rect>(this, Rect.class));
+		addTool(new GenericTool<Oval>(this, Oval.class));
 	}
 
 	/**
