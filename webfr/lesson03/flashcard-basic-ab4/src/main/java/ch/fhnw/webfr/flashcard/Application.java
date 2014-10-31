@@ -4,8 +4,10 @@ package ch.fhnw.webfr.flashcard;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 // Don't scan the test package!
+@Configuration
 @ComponentScan(basePackages={"ch.fhnw.webfr.flashcard.web","ch.fhnw.webfr.flashcard.persistence"})
 @EnableAutoConfiguration
 public class Application {

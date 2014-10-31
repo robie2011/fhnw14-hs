@@ -19,6 +19,7 @@ jar {
     baseName = 'flashcard-mvc-war'
 }
 
+
 repositories {
     mavenCentral()
     maven { url "http://repo.spring.io/libs-milestone" }
