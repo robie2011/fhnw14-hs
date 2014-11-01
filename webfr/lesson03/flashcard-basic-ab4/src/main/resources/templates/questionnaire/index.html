@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>flashcard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Hallooo</h1>
+    <div th:each="questionnaire : ${questionnaires}">
+        [<span th:text="${questionnaire.id}">0</span>]
+        <strong th:text="${questionnaire.title}">title of questionnaire 0</strong><br/>
+        <span th:text="${questionnaire.description}">description of questionnaire 0</span>
+        <p/>
+    </div>
+    <div th:remove="all">
+        [<span >1</span>]
+        <strong >title of questionnaire 1</strong><br/>
+        <span >description of questionnaire 1</span>
+        <p/>
+    </div>
+    <div th:remove="all">
+        [<span >2</span>]
+        <strong >title of questionnaire 2</strong><br/>
+        <span >description of questionnaire 2</span>
+        <p/>
+        </div>  
+</body>
+</html>

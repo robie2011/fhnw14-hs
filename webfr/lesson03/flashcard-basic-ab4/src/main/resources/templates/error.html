@@ -1,0 +1,15 @@
+<h1>Error Page</h1>
+  <p>Application has encountered an error. Please contact support on ...</p>
+
+  
+  <h2>Failed URL: ${url}</h2>
+  
+  <pre>
+  	Exception:  ${exception.message}
+  </pre>
+  
+  <h2>StackTrace</h2>
+  <pre>
+  <c:forEach items="${exception.stackTrace}" var="ste">    ${ste} 
+  </c:forEach>
+  </pre>

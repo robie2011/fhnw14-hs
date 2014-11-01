@@ -7,8 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 // Don't scan the test package!
-@Configuration
-@ComponentScan(basePackages={"ch.fhnw.webfr.flashcard.web","ch.fhnw.webfr.flashcard.persistence"})
+@ComponentScan(basePackages={"ch.fhnw.webfr.flashcard.web","ch.fhnw.webfr.flashcard.persistence", "ch.fhnw.webfr.flashcard.domain"})
 @EnableAutoConfiguration
 public class Application {
 	
